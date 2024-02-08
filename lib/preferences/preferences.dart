@@ -5,6 +5,7 @@ class Preferences {
 
   static String correu = '';
   static String contrasenya = '';
+  static bool recordar = false;
 
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -24,5 +25,13 @@ class Preferences {
 
   static set password(String value) {
     _prefs.setString('contrasenya', value);
+  }
+
+  static bool get remember {
+    return _prefs.getBool('recordar') ?? false;
+  }
+
+  static set remember(bool value) {
+    _prefs.setBool('recordar', value);
   }
 }
